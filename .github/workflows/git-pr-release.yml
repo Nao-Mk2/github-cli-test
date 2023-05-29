@@ -1,0 +1,18 @@
+name: git-pr-release
+
+on:
+  push:
+    branches:
+    - develop
+
+jobs:
+  git-pr-release:
+    runs-on: ubuntu-latest
+    steps:
+      - run: git-pr-release
+        env:
+          GIT_PR_RELEASE_BRANCH_PRODUCTION: main
+          GIT_PR_RELEASE_BRANCH_STAGING: develop
+          GIT_PR_RELEASE_LABELS: pr-release
+          GIT_PR_RELEASE_TEMPLATE: .github/git-pr-release.erb
+          # TZ: Asia/Tokyo
